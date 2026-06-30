@@ -181,6 +181,9 @@ const PROJECTS = [
     stack: ["Kubernetes", "ArgoCD", "Istio", "Helm", "Azure AKS", "AWS EKS", "Terraform"],
     status: "Live in production",
     category: "infra",
+    links: [
+      { label: "Platform Console", url: "https://web-production-60f07c.up.railway.app/" }
+    ],
   },
   {
     code: "02",
@@ -196,6 +199,9 @@ const PROJECTS = [
     stack: ["Claude API", "n8n", "Airflow", "Celonis", "SAP SOAP/BAPI", "Azure AKS", "Docker", "FastAPI"],
     status: "Live in UAT",
     category: "ai",
+    links: [
+      { label: "Agent Portal", url: "https://pca-modified-production-05fb.up.railway.app/" }
+    ],
   },
   {
     code: "03",
@@ -211,6 +217,9 @@ const PROJECTS = [
     stack: ["RAG", "FAISS", "LangChain", "MLflow", "LangSmith", "Kubernetes", "OPA", "Vault"],
     status: "Delivered",
     category: "ai",
+    links: [
+      { label: "RAG Portal", url: "https://j-j-frontend.vercel.app/" }
+    ],
   },
   {
     code: "04",
@@ -226,6 +235,9 @@ const PROJECTS = [
     stack: ["GKE", "Istio", "Helm", "Terraform", "Cloud Build", "Prometheus", "Grafana"],
     status: "Delivered",
     category: "infra",
+    links: [
+      { label: "Migration Dashboard", url: "https://reverse-migration-ui.vercel.app/dashboard" }
+    ],
   },
   {
     code: "05",
@@ -241,6 +253,9 @@ const PROJECTS = [
     stack: ["LangGraph", "AWS Bedrock", "Claude API", "Azure AKS", "Helm", "Vault", "Redis", "PostgreSQL"],
     status: "Active development",
     category: "ai",
+    links: [
+      { label: "AI Call Intel", url: "https://ai-call-intelligence-red.vercel.app/" }
+    ],
   },
   {
     code: "06",
@@ -256,6 +271,10 @@ const PROJECTS = [
     stack: ["Microsoft Fabric", "Azure Event Hubs", "Kafka", "ADF Pipelines", "Airflow", "Power BI", "Celonis"],
     status: "Delivered",
     category: "infra",
+    links: [
+      { label: "SCNV Portal", url: "https://scnv-frontend.vercel.app/login" },
+      { label: "SCNV Console", url: "https://scnv-frontend-daksihtedit-production.up.railway.app/login" }
+    ],
   },
 ];
 
@@ -662,6 +681,31 @@ export default function App() {
                   <div className="project-stack">
                     {p.stack.map((s) => <span className="tag" key={s}>{s}</span>)}
                   </div>
+                  {p.links && p.links.length > 0 && (
+                    <div className="project-links" style={{ marginTop: "16px", display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                      {p.links.map((link) => (
+                        <a
+                          key={link.url}
+                          href={link.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="btn btn-ghost"
+                          style={{
+                            fontSize: "12px",
+                            padding: "6px 14px",
+                            height: "auto",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "6px",
+                            textDecoration: "none",
+                            lineHeight: "1.2",
+                          }}
+                        >
+                          <span>🔗</span> {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </article>
             ))}
